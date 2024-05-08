@@ -2,8 +2,8 @@ package com.Ambientese.Empresa.Controller;
 
 import com.Ambientese.Empresa.DTO.EmpresaRequest;
 import com.Ambientese.Empresa.Model.Empresa;
-import com.Ambientese.Empresa.EmpresaRepository.EmpresaRepository;
-import com.Ambientese.Empresa.Services.ValidacaoService;
+import com.Ambientese.Empresa.Repository.EmpresaRepository;
+import com.Ambientese.Empresa.Services.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -21,7 +21,7 @@ public class EmpresaController {
     private EmpresaRepository empresaRepository;
 
     @Autowired
-    private ValidacaoService validacaoService;
+    private EmpresaService empresaService;
 
     @GetMapping
     public List<Empresa> listarEmpresa() {
@@ -30,12 +30,12 @@ public class EmpresaController {
 
     @PostMapping
     public Empresa criarEmpresa(@Valid @RequestBody EmpresaRequest empresaRequest) {
-        return validacaoService.criarEmpresa(empresaRequest);
+        return empresaService.criarEmpresa(empresaRequest);
     }
 
     @PutMapping("/{id}")
     public Empresa atualizarEmpresa(@PathVariable Long id, @Valid @RequestBody EmpresaRequest empresaRequest) {
-        return validacaoService.atualizarEmpresa(id, empresaRequest);
+        return empresaService.atualizarEmpresa(id, empresaRequest);
     }
 
     @DeleteMapping("/{id}")

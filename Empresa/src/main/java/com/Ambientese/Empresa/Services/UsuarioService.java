@@ -3,7 +3,7 @@ package com.Ambientese.Empresa.Services;
 import com.Ambientese.Empresa.Model.Usuario;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import com.Ambientese.Empresa.EmpresaRepository.UsuarioRepository;
+import com.Ambientese.Empresa.Repository.UsuarioRepository;
 
 import java.util.List;
 import java.util.Optional;

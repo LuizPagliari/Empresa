@@ -1,7 +1,7 @@
 package com.Ambientese.Empresa.Services;
 
 import com.Ambientese.Empresa.DTO.EmpresaRequest;
-import com.Ambientese.Empresa.EmpresaRepository.EmpresaRepository;
+import com.Ambientese.Empresa.Repository.EmpresaRepository;
 import com.Ambientese.Empresa.Exception.ValidacaoException;
 import com.Ambientese.Empresa.Model.Empresa;
 import com.Ambientese.Empresa.Model.Endereco;
@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ValidacaoService {
+public class EmpresaService {
 
     @Autowired
     private EmpresaRepository empresaRepository;

@@ -1,4 +1,4 @@
-    package com.Ambientese.Empresa.EmpresaRepository;
+    package com.Ambientese.Empresa.Repository;
 
     import com.Ambientese.Empresa.Model.Endereco;
     import org.springframework.data.jpa.repository.JpaRepository;
