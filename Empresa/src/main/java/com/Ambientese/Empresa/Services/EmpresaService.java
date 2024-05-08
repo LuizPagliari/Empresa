@@ -3,8 +3,8 @@ package com.Ambientese.Empresa.Services;
 import com.Ambientese.Empresa.DTO.EmpresaRequest;
 import com.Ambientese.Empresa.Repository.EmpresaRepository;
 import com.Ambientese.Empresa.Exception.ValidacaoException;
-import com.Ambientese.Empresa.Model.Empresa;
-import com.Ambientese.Empresa.Model.Endereco;
+import com.Ambientese.Empresa.Model.EmpresaModel;
+import com.Ambientese.Empresa.Model.EnderecoModel;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -106,48 +106,48 @@ public class EmpresaService {
         if (empresaRequest.getPorteEmpresas() == null) {
             throw new ValidacaoException("O porte da empresa não pode estar em branco");
         }
-        Endereco endereco = empresaRequest.getEndereco();
-        if (endereco == null) {
+        EnderecoModel enderecoModel = empresaRequest.getEndereco();
+        if (enderecoModel == null) {
             throw new ValidacaoException("É necessário associar um endereço à empresa");
         } else {
-            if (endereco.getUF() == null || endereco.getUF().isEmpty()) {
+            if (enderecoModel.getUF() == null || enderecoModel.getUF().isEmpty()) {
                 throw new ValidacaoException("O campo UF do endereço é obrigatório e não pode estar em branco");
             }
         }
     }
 
-    public Empresa criarEmpresa(EmpresaRequest empresaRequest) {
+    public EmpresaModel criarEmpresa(EmpresaRequest empresaRequest) {
         validarCamposObrigatorios(empresaRequest);
-        Empresa empresa = new Empresa();
-        empresa.setNomeFantasia(empresaRequest.getNomeFantasia());
-        empresa.setNomeSolicitante(empresaRequest.getNomeSolicitante());
-        empresa.setTelefoneSolicitante(empresaRequest.getTelefoneSolicitante());
-        empresa.setRazaoSocial(empresaRequest.getRazaoSocial());
-        empresa.setCnpj(empresaRequest.getCnpj());
-        empresa.setInscricaoSocial(empresaRequest.getInscricaoSocial());
-        empresa.setEmail(empresaRequest.getEmail());
-        empresa.setTelefoneEmpresas(empresaRequest.getTelefoneEmpresas());
-        empresa.setRamo(empresaRequest.getRamo());
-        empresa.setPorteEmpresas(empresaRequest.getPorteEmpresas());
-        empresa.setEndereco(empresaRequest.getEndereco());
-        return empresaRepository.save(empresa);
+        EmpresaModel empresaModel = new EmpresaModel();
+        empresaModel.setNomeFantasia(empresaRequest.getNomeFantasia());
+        empresaModel.setNomeSolicitante(empresaRequest.getNomeSolicitante());
+        empresaModel.setTelefoneSolicitante(empresaRequest.getTelefoneSolicitante());
+        empresaModel.setRazaoSocial(empresaRequest.getRazaoSocial());
+        empresaModel.setCnpj(empresaRequest.getCnpj());
+        empresaModel.setInscricaoSocial(empresaRequest.getInscricaoSocial());
+        empresaModel.setEmail(empresaRequest.getEmail());
+        empresaModel.setTelefoneEmpresas(empresaRequest.getTelefoneEmpresas());
+        empresaModel.setRamo(empresaRequest.getRamo());
+        empresaModel.setPorteEmpresas(empresaRequest.getPorteEmpresas());
+        empresaModel.setEndereco(empresaRequest.getEndereco());
+        return empresaRepository.save(empresaModel);
     }
 
-    public Empresa atualizarEmpresa(Long id, EmpresaRequest empresaRequest) {
-        Empresa empresa = empresaRepository.findById(id)
+    public EmpresaModel atualizarEmpresa(Long id, EmpresaRequest empresaRequest) {
+        EmpresaModel empresaModel = empresaRepository.findById(id)
                 .orElseThrow(() -> new ValidacaoException("Empresa não encontrada com o ID: " + id));
         validarCamposObrigatorios(empresaRequest);
-        empresa.setNomeFantasia(empresaRequest.getNomeFantasia());
-        empresa.setNomeSolicitante(empresaRequest.getNomeSolicitante());
-        empresa.setTelefoneSolicitante(empresaRequest.getTelefoneSolicitante());
-        empresa.setRazaoSocial(empresaRequest.getRazaoSocial());
-        empresa.setCnpj(empresaRequest.getCnpj());
-        empresa.setInscricaoSocial(empresaRequest.getInscricaoSocial());
-        empresa.setEmail(empresaRequest.getEmail());
-        empresa.setTelefoneEmpresas(empresaRequest.getTelefoneEmpresas());
-        empresa.setRamo(empresaRequest.getRamo());
-        empresa.setPorteEmpresas(empresaRequest.getPorteEmpresas());
-        empresa.setEndereco(empresaRequest.getEndereco());
-        return empresaRepository.save(empresa);
+        empresaModel.setNomeFantasia(empresaRequest.getNomeFantasia());
+        empresaModel.setNomeSolicitante(empresaRequest.getNomeSolicitante());
+        empresaModel.setTelefoneSolicitante(empresaRequest.getTelefoneSolicitante());
+        empresaModel.setRazaoSocial(empresaRequest.getRazaoSocial());
+        empresaModel.setCnpj(empresaRequest.getCnpj());
+        empresaModel.setInscricaoSocial(empresaRequest.getInscricaoSocial());
+        empresaModel.setEmail(empresaRequest.getEmail());
+        empresaModel.setTelefoneEmpresas(empresaRequest.getTelefoneEmpresas());
+        empresaModel.setRamo(empresaRequest.getRamo());
+        empresaModel.setPorteEmpresas(empresaRequest.getPorteEmpresas());
+        empresaModel.setEndereco(empresaRequest.getEndereco());
+        return empresaRepository.save(empresaModel);
     }
 }

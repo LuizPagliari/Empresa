@@ -5,11 +5,11 @@
         import javax.validation.constraints.NotNull;
         import javax.validation.constraints.Pattern;
 
-        import com.Ambientese.Empresa.Model.Enum.PorteEnum;
+        import com.Ambientese.Empresa.Model.Enums.PorteEnum;
         import jakarta.persistence.*;
 
         @Entity
-        public class Empresa {
+        public class EmpresaModel {
             @Id
             @GeneratedValue(strategy = GenerationType.IDENTITY)
             private Long id;
@@ -36,7 +36,7 @@
             private String inscricaoSocial;
             @OneToOne(cascade = CascadeType.ALL)
             @JoinColumn(name = "endereco_id", referencedColumnName = "id")
-            private Endereco endereco;
+            private EnderecoModel enderecoModel;
             @Email
             @NotBlank(message = "O email não pode estar em branco")
             private String email;
@@ -65,7 +65,7 @@
                     return false;
                 if (getClass() != obj.getClass())
                     return false;
-                Empresa other = (Empresa) obj;
+                EmpresaModel other = (EmpresaModel) obj;
                 return Objects.equals(id, other.id);
             }
 
@@ -117,12 +117,12 @@
                 this.inscricaoSocial = inscricaoSocial;
             }
 
-            public Endereco getEndereco() {
-                return endereco;
+            public EnderecoModel getEndereco() {
+                return enderecoModel;
             }
 
-            public void setEndereco(Endereco endereco) {
-                this.endereco = endereco;
+            public void setEndereco(EnderecoModel enderecoModel) {
+                this.enderecoModel = enderecoModel;
             }
 
             public String getEmail() {

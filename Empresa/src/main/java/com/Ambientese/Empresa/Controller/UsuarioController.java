@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.Ambientese.Empresa.Model.Usuario;
+import com.Ambientese.Empresa.Model.UsuarioModel;
 import com.Ambientese.Empresa.Services.UsuarioService;
 
 import javax.validation.Valid;
@@ -23,26 +23,26 @@ public class UsuarioController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Usuario>> getAllUsuarios() {
-        List<Usuario> usuarios = usuarioService.getAllUsuarios();
-        return ResponseEntity.ok(usuarios);
+    public ResponseEntity<List<UsuarioModel>> getAllUsuarios() {
+        List<UsuarioModel> usuarioModels = usuarioService.getAllUsuarios();
+        return ResponseEntity.ok(usuarioModels);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> getUsuarioById(@PathVariable Long id) {
-        Optional<Usuario> usuario = usuarioService.getUsuarioById(id);
+    public ResponseEntity<UsuarioModel> getUsuarioById(@PathVariable Long id) {
+        Optional<UsuarioModel> usuario = usuarioService.getUsuarioById(id);
         return usuario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public ResponseEntity<Usuario> createUsuario(@Valid @RequestBody Usuario usuario) {
-        Usuario createdUsuario = usuarioService.createUsuario(usuario);
-        return ResponseEntity.status(HttpStatus.CREATED).body(createdUsuario);
+    public ResponseEntity<UsuarioModel> createUsuario(@Valid @RequestBody UsuarioModel usuarioModel) {
+        UsuarioModel createdUsuarioModel = usuarioService.createUsuario(usuarioModel);
+        return ResponseEntity.status(HttpStatus.CREATED).body(createdUsuarioModel);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Usuario> updateUsuario(@PathVariable Long id, @Valid @RequestBody Usuario usuario) {
-        Optional<Usuario> updatedUsuario = usuarioService.updateUsuario(id, usuario);
+    public ResponseEntity<UsuarioModel> updateUsuario(@PathVariable Long id, @Valid @RequestBody UsuarioModel usuarioModel) {
+        Optional<UsuarioModel> updatedUsuario = usuarioService.updateUsuario(id, usuarioModel);
         return updatedUsuario.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 

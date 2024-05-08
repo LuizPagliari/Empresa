@@ -1,7 +1,7 @@
     package com.Ambientese.Empresa.DTO;
 
-    import com.Ambientese.Empresa.Model.Endereco;
-    import com.Ambientese.Empresa.Model.Enum.PorteEnum;
+    import com.Ambientese.Empresa.Model.EnderecoModel;
+    import com.Ambientese.Empresa.Model.Enums.PorteEnum;
 
     public class EmpresaRequest {
 
@@ -15,7 +15,7 @@
         private String telefoneEmpresas;
         private String ramo;
         private PorteEnum porteEmpresas;
-        private Endereco endereco;
+        private EnderecoModel enderecoModel;
 
         // Getters e Setters
 
@@ -99,11 +99,11 @@
             this.porteEmpresas = porteEmpresas;
         }
 
-        public Endereco getEndereco() {
-            return endereco;
+        public EnderecoModel getEndereco() {
+            return enderecoModel;
         }
 
-        public void setEndereco(Endereco endereco) {
-            this.endereco = endereco;
+        public void setEndereco(EnderecoModel enderecoModel) {
+            this.enderecoModel = enderecoModel;
         }
     }

@@ -8,7 +8,7 @@
     import javax.validation.constraints.NotNull;
 
     @Entity
-    public class Endereco {
+    public class EnderecoModel {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private Long id;

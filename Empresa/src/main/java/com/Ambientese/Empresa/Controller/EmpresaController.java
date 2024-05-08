@@ -1,7 +1,7 @@
 package com.Ambientese.Empresa.Controller;
 
 import com.Ambientese.Empresa.DTO.EmpresaRequest;
-import com.Ambientese.Empresa.Model.Empresa;
+import com.Ambientese.Empresa.Model.EmpresaModel;
 import com.Ambientese.Empresa.Repository.EmpresaRepository;
 import com.Ambientese.Empresa.Services.EmpresaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,24 +24,24 @@ public class EmpresaController {
     private EmpresaService empresaService;
 
     @GetMapping
-    public List<Empresa> listarEmpresa() {
+    public List<EmpresaModel> listarEmpresa() {
         return empresaRepository.findAll();
     }
 
     @PostMapping
-    public Empresa criarEmpresa(@Valid @RequestBody EmpresaRequest empresaRequest) {
+    public EmpresaModel criarEmpresa(@Valid @RequestBody EmpresaRequest empresaRequest) {
         return empresaService.criarEmpresa(empresaRequest);
     }
 
     @PutMapping("/{id}")
-    public Empresa atualizarEmpresa(@PathVariable Long id, @Valid @RequestBody EmpresaRequest empresaRequest) {
+    public EmpresaModel atualizarEmpresa(@PathVariable Long id, @Valid @RequestBody EmpresaRequest empresaRequest) {
         return empresaService.atualizarEmpresa(id, empresaRequest);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<?> deletarEmpresa(@PathVariable Long id) {
-        return empresaRepository.findById(id).map(empresa -> {
-            empresaRepository.delete(empresa);
+        return empresaRepository.findById(id).map(empresaModel -> {
+            empresaRepository.delete(empresaModel);
             return ResponseEntity.ok().build();
         }).orElse(ResponseEntity.notFound().build());
     }
