@@ -1,7 +1,7 @@
     package com.Ambientese.Empresa.DTO;
 
     import com.Ambientese.Empresa.Model.Endereco;
-    import com.Ambientese.Empresa.Model.Enums.PorteEnum;
+    import com.Ambientese.Empresa.Model.Enum.PorteEnum;
 
     public class EmpresaRequest {
 
@@ -14,7 +14,7 @@
         private String email;
         private String telefoneEmpresas;
         private String ramo;
-        private PorteEnum porteEmpresas; // Alterado para PorteEnum
+        private PorteEnum porteEmpresas;
         private Endereco endereco;
 
         // Getters e Setters

@@ -1,8 +1,8 @@
     package com.Ambientese.Empresa.EmpresaRepository;
 
     import org.springframework.data.jpa.repository.JpaRepository;
-    import com.Ambientese.Empresa.Model.Empresas;
+    import com.Ambientese.Empresa.Model.Empresa;
 
-    public interface EmpresaRepository extends JpaRepository<Empresas, Long> {
+    public interface EmpresaRepository extends JpaRepository<Empresa, Long> {
         boolean existsByCnpj(String cnpj);
     }

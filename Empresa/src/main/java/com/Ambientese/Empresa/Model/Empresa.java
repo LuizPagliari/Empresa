@@ -5,11 +5,11 @@
         import javax.validation.constraints.NotNull;
         import javax.validation.constraints.Pattern;
 
-        import com.Ambientese.Empresa.Model.Enums.PorteEnum;
+        import com.Ambientese.Empresa.Model.Enum.PorteEnum;
         import jakarta.persistence.*;
 
         @Entity
-        public class Empresas {
+        public class Empresa {
             @Id
             @GeneratedValue(strategy = GenerationType.IDENTITY)
             private Long id;
@@ -65,7 +65,7 @@
                     return false;
                 if (getClass() != obj.getClass())
                     return false;
-                Empresas other = (Empresas) obj;
+                Empresa other = (Empresa) obj;
                 return Objects.equals(id, other.id);
             }
 

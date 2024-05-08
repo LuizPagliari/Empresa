@@ -1,4 +1,4 @@
-package com.Ambientese.Empresa.Model.Enums;
+package com.Ambientese.Empresa.Model.Enum;
 
 public enum PorteEnum {
     Pequeno,
